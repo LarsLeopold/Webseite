@@ -6,6 +6,10 @@
         <title> Lars Leopold Portfolio </title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/> <!-- Normalize all Browser Functions -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.css"/> 
+
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;900&family=Source+Sans+Pro:wght@300;900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/style.css">
     </header>
     <body>
         <header>
@@ -17,12 +21,127 @@
             </button> 
             <nav class="nav">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">Services</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">About me</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">My Work</a></li>
+                    <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About me</a></li>
+                    <li class="nav__item"><a href="#work" class="nav__link">My Work</a></li>
                 </ul>
             </nav>
         </header>
+
+        <!-- Introduction -->
+        <section class="intro" id="home">
+            <h1 class="section__title section__title--intro">
+                Hi, I am <strong>Lars Leopold</strong>
+            </h1>
+            <p class="section__subtitle section__subtitle--intro">Sys-Admin</p>
+            <img src="img/photo.png" alt="Image">
+        </section>
+
+
+        <!-- Services -->
+        <section class="my-services" id="services">
+                <h2 class="section__title section__title--services">What I do</h2>
+                <div class="services">
+                    <div class="service">
+                        <h3>Design</h3>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    </div> 
+
+                    <div class="service">
+                        <h3>IT</h3>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    </div> 
+
+                    <div class="service">
+                        <h3>Test</h3>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    </div> 
+                </div>
+
+                <a href="#work" class="btn">My Work</a>
+        </section>
+
+        <!-- About Me -->
+        <section class="about-me" id="about">
+            <h2 class="section__title section__title--about">Who I am</h2>
+            <p class="section__subtitle section_subtitle--about"></p>
+
+            <div class="about-me__body">
+                <p></p>
+                <p></p>
+            </div>
+
+            <img src="img/photo.png" alt="Avatar">
+        </section>
+
+        <!-- My Work -->
+        <section class="my-work" id="work">
+            <h2 class="section__title">My Work</h2>
+            <p class="section__subtitle"></p>
+
+            <div class="portfolio">
+                <!-- Portfolio Item 1 -->
+                <a href="#" class="portfolio__item">
+                    <img src="img/photo.png" alt="" class="portfolio__img">
+                </a>
+
+                <!-- Portfolio Item 2 -->
+                <a href="#" class="portfolio__item">
+                    <img src="img/photo.png" alt="" class="portfolio__img">
+                </a>
+
+                <!-- Portfolio Item 3 -->
+                <a href="#" class="portfolio__item">
+                    <img src="img/photo.png" alt="" class="portfolio__img">
+                </a>
+
+                <!-- Portfolio Item 4 -->
+                <a href="#" class="portfolio__item">
+                    <img src="img/photo.png" alt="" class="portfolio__img">
+                </a>
+
+                <!-- Portfolio Item 5 -->
+                <a href="#" class="portfolio__item">
+                    <img src="img/photo.png" alt="" class="portfolio__img">
+                </a>
+
+                <!-- Portfolio Item 6 -->
+                <a href="#" class="portfolio__item">
+                    <img src="img/photo.png" alt="" class="portfolio__img">
+                </a>
+
+                <!-- Portfolio Item 7 -->
+                <a href="#" class="portfolio__item">
+                    <img src="img/photo.png" alt="" class="portfolio__img">
+                </a>
+
+                <!-- Portfolio Item 8 -->
+                <a href="#" class="portfolio__item">
+                    <img src="img/photo.png" alt="" class="portfolio__img">
+                </a>
+
+                <!-- Portfolio Item 9 -->
+                <a href="#" class="portfolio__item">
+                    <img src="img/photo.png" alt="" class="portfolio__img">
+                </a>
+
+                <!-- Portfolio Item 01 -->
+                <a href="#" class="portfolio__item">
+                    <img src="img/photo.png" alt="" class="portfolio__img">
+                </a>
+            </div>
+        </section> 
+
+        <!-- Footer -->
+        <footer>
+            <a href="mailto:info@lars-leopold.de" class="footer-link">info@lars-leopold.de</a>
+            <ul class="social-list">
+                <li class="social-list__item"><a class="social-list__link" href="#">a</a></li>
+                <li class="social-list__item"><a class="social-list__link" href="#">b</a></li>
+                <li class="social-list__item"><a class="social-list__link" href="#">c</a></li>
+                <li class="social-list__item"><a class="social-list__link" href="#">d</a></li>
+            </ul>
+        </footer>
     </body>
 </html>
