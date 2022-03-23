@@ -548,6 +548,11 @@ header {
     font-size: 15px;
     padding: 1em;
     margin-top: 5px;
+    display: block;
+}
+
+.codeHighlight {
+    color: var(--clr-accent);
 }
 
 .portfolio-item-individual_nc > p {
