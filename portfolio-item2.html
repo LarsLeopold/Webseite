@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+    <header>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Scaling for small Devices -->
+        <title> Lars Leopold Portfolio </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/> <!-- Normalize all Browser Functions -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.css"/> 
+
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;900&family=Source+Sans+Pro:wght@300;900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/style.css">
+    </header>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="img/Logo.svg" alt="Avatar">
+            </div>
+            <button class="nav-toggle" arial-label="toogle naviagtion">
+                <span class="hamburger"></span>
+            </button> 
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="index.html#services" class="nav__link">Services</a></li>
+                    <li class="nav__item"><a href="index.html#skills" class="nav__link">Skills</a></li>
+                    <li class="nav__item"><a href="index.html#about" class="nav__link">About me</a></li>
+                    <li class="nav__item"><a href="index.html#work" class="nav__link">My Work</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Introduction -->
+        <section class="intro">
+            <h1 class="section__title section__title--intro">
+                NextCloud auf <strong>Oracle Linux 8</strong> CLI
+            </h1>
+            <p class="section__subtitle section__subtitle--intro">Installationsanleitung</p>
+            <img src="img/nextcloud-square-logo.png" alt="Image" class="intro__img">
+        </section>
+
+        <div class="portfolio-item-individual">
+            <h3>Einleitung</h3>
+                <div>
+                    <p>Auch wenn Oracle Linux 8 laut NextCloud Systemvoraussetzungen nicht offiziell unterstützt wird, ist des dennoch möglich, NextCloud auf dieser Linux Distribution zu installieren.</p> 
+                </div>
+            <h3>Schritt 1 - Grundlagen</h3>
+                <div class="portfolio-item-individual_nc">
+                    <p>NextCloud arbeitet nach dem <b>LAMP-</b> (<b>L</b>inux, <b>A</b>pache, <b>M</b>ySQL, <b>P</b>HP)-Prinzip. Innerhalb dieser Anleitung werden wir Schritt für Schritt die einzelnen Komponenten installieren.</p>
+                 <strong>Installation Oracle Linux:</strong>
+                    <p>Zunächst benötigen wir als Basis ein installiertes Oracle Linux in der Grundinstallation ohne GUI. Ich für meinen Teil werde Oracle Linux in einer VM im VMware Workstation Player installieren. Sollten Sie Hilfe bei der Erstellung einer VM benötigen, hilft ihnen diese Anleitung weiter:
+                        <a href="https://docs.vmware.com/en/VMware-Workstation-Player-for-Windows/index.html">Anleitungen VMware Workstation Player</a></p>
+                    <p>Serverkonfiguration, die ich zu Testzwecken verwendet habe: 
+                        <ul>
+                            <li>50 GB Speicher</li>
+                            <li>512 MB RAM</li>
+                            <li>2 Kerne CPU</li>
+                        </ul>
+                    </p>
+                    <p>Weitere Konfigurationsvorschläge finden Sie unter folgendem Link:
+                    <a href="https://portal.nextcloud.com/article/nextcloud-deployment-recommendations-7.html">Deployment Recommendations</a>
+                    </p>
+                 <strong>Installation Apache</strong>
+                    <pre class="codeblock">sudo dnf -y install httpd<br>sudo systemctl enable --now httpd.service</pre>
+                    <p>Um zu überprüfen, ob der Service läuft, folgenden Command ausführen: </p>
+                    <pre class="codeblock">sudo systemctl status httpd</pre>
+                    <p>Anschließend müssen noch die Ports auf der Firewall des Server freigeschaltet werden:</p>
+                    <pre class="codeblock">sudo firewall-cmd --permanent --add-service={http,https}<br>sudo firewall-cmd –-reload</pre>
+                    <p>Anschließend per per <i>ifconfig</i>, die IP-Adresse des Servers herausfinden und diese im Browser ihrer Wahl eingeben, um zu verifizieren, dass der Webserver funktionsfähig ist.</p>
+                    <img src="img/nc/apache.png">
+                 <strong>Installation MySQL</strong>
+                    <p>Zunächst muss überprüft werden, welche MySQL-Version verfügbar ist:</p>    
+                    <pre class="codeblock">sudo dnf module list mysql</pre>
+                    <img src="img/nc/ModuleListSQL.PNG">
+                    <p>Abhängig von dieser, muss sie ausgewählt und installiert werden.<br>NextCloud empfiehlt und unterstützt aktuell Version 8.0</p>
+                    <pre class="codeblock">sudo dnf install -y @mysql:8.0</pre>
+                    <p>Die erfolgreiche Installation kann mit folgendem Befehl überprüft werden:</p>
+                    <pre class="codeblock">sudo rpm -qi mysql-server</pre>
+                    <img src="img/nc/VersionCheckSQL.PNG">
+                </div>     
+            
+        </div>
+
+
+
+
+
+
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="mailto:info@lars-leopold.de" class="footer__link">info@lars-leopold.de</a>
+            <ul class="social-list">
+                <li class="social-list__item">
+                    <a class="social-list__link" href="www.github.com/LarsLeopold/">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="www.twitter.com">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="www.instagram.com">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="www.linkedin">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+
+        <script src="js/index.js"></script>
+
+    </body>
+</html>

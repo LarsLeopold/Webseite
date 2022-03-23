@@ -538,3 +538,18 @@ header {
     max-width: 1000px;
     margin: 0 auto;
 }
+
+/* Portfolio 2 */
+.codeblock {
+    background: var(--clr-dark);
+    color: var(--clr-light);
+    border-left: 3px solid var(--clr-accent);
+    page-break-inside: avoid;
+    font-size: 15px;
+    padding: 1em;
+    margin-top: 5px;
+}
+
+.portfolio-item-individual_nc > p {
+    margin: 5px;
+}
