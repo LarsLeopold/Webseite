@@ -40,194 +40,191 @@
         </section>
 
         <div class="portfolio-item-individual">
-            <h3>Einleitung</h3>
-                <div>
+            <div class="portfolio-item-individual_nc">
+                    <h3>Einleitung</h3>
                     <p>Auch wenn Oracle Linux 8 laut NextCloud Systemvoraussetzungen nicht offiziell unterstützt wird, ist des dennoch möglich, NextCloud auf dieser Linux Distribution zu installieren.</p> 
-                </div>
+                    <br>
+            </div>
                 <div class="portfolio-item-individual_nc">
                     <h3>Schritt 1 - Grundlagen</h3>
-                    <p>NextCloud arbeitet nach dem <b>LAMP-</b> (<b>L</b>inux, <b>A</b>pache, <b>M</b>ySQL, <b>P</b>HP)-Prinzip. Innerhalb dieser Anleitung werden wir Schritt für Schritt die einzelnen Komponenten installieren.</p>
-                 <strong>Installation Oracle Linux:</strong>
-                    <p>Zunächst benötigen wir als Basis ein installiertes Oracle Linux in der Grundinstallation ohne GUI. Ich für meinen Teil werde Oracle Linux in einer VM im VMware Workstation Player installieren. Sollten Sie Hilfe bei der Erstellung einer VM benötigen, hilft ihnen diese Anleitung weiter:
-                        <a href="https://docs.vmware.com/en/VMware-Workstation-Player-for-Windows/index.html">Anleitungen VMware Workstation Player</a></p>
-                    <p>Serverkonfiguration, die ich zu Testzwecken verwendet habe: 
+                        <p>NextCloud arbeitet nach dem <b>LAMP-</b> (<b>L</b>inux, <b>A</b>pache, <b>M</b>ySQL, <b>P</b>HP)-Prinzip. Innerhalb dieser Anleitung werden wir Schritt für Schritt die einzelnen Komponenten installieren.</p>
+                        <br>
+                    <strong>Installation Oracle Linux:</strong>
+                        <p>Zunächst benötigen wir als Basis ein installiertes Oracle Linux in der Grundinstallation ohne GUI. Ich für meinen Teil werde Oracle Linux in einer VM im VMware Workstation Player installieren. Sollten Sie Hilfe bei der Erstellung einer VM benötigen, hilft ihnen diese Anleitung weiter:
+                             <a href="https://docs.vmware.com/en/VMware-Workstation-Player-for-Windows/index.html">Anleitungen VMware Workstation Player</a></p>
+                        <p>Serverkonfiguration, die ich zu Testzwecken verwendet habe:</p>
                         <ul>
                             <li>50 GB Speicher</li>
                             <li>512 MB RAM</li>
                             <li>2 Kerne CPU</li>
                         </ul>
-                    </p>
-                    <p>Weitere Konfigurationsvorschläge finden Sie unter folgendem Link:
-                    <a href="https://portal.nextcloud.com/article/nextcloud-deployment-recommendations-7.html">Deployment Recommendations</a>
-                    </p>
-                 <strong>Installation Apache</strong>
-                    <pre class="codeblock">sudo dnf -y install httpd<br>sudo systemctl enable --now httpd.service</pre>
-                    <p>Um zu überprüfen, ob der Service läuft, folgenden Command ausführen: </p>
-                    <pre class="codeblock">sudo systemctl status httpd</pre>
-                    <p>Anschließend müssen noch die Ports auf der Firewall des Server freigeschaltet werden:</p>
-                    <pre class="codeblock">sudo firewall-cmd --permanent --add-service={http,https}<br>sudo firewall-cmd –-reload</pre>
-                    <p>Anschließend per per <i>ifconfig</i>, die IP-Adresse des Servers herausfinden und diese im Browser ihrer Wahl eingeben, um zu verifizieren, dass der Webserver funktionsfähig ist.</p>
-                    <img src="img/nc/apache.png">
-                 <strong>Installation MySQL</strong>
-                    <p>Zunächst muss überprüft werden, welche MySQL-Version verfügbar ist:</p>    
-                    <pre class="codeblock">sudo dnf module list mysql</pre>
-                    <img src="img/nc/ModuleListSQL.PNG">
-                    <p>Abhängig von dieser, muss sie ausgewählt und installiert werden.<br>NextCloud empfiehlt und unterstützt aktuell Version 8.0</p>
-                    <pre class="codeblock">sudo dnf install -y @mysql:8.0</pre>
-                    <p>Die erfolgreiche Installation kann mit folgendem Befehl überprüft werden:</p>
-                    <pre class="codeblock">sudo rpm -qi mysql-server</pre>
-                    <img src="img/nc/VersionCheckSQL.PNG">
-                    <br></br>
+                        <p>Weitere Konfigurationsvorschläge finden Sie unter folgendem Link:
+                            <a href="https://portal.nextcloud.com/article/nextcloud-deployment-recommendations-7.html">Deployment Recommendations</a>
+                        </p>
+                        <br>
+                    <strong>Installation Apache</strong>
+                            <pre class="codeblock">sudo dnf -y install httpd<br>sudo systemctl enable --now httpd.service</pre>
+                        <p>Um zu überprüfen, ob der Service läuft, folgenden Command ausführen: </p>
+                            <pre class="codeblock">sudo systemctl status httpd</pre>
+                        <p>Anschließend müssen noch die Ports auf der Firewall des Server freigeschaltet werden:</p>
+                            <pre class="codeblock">sudo firewall-cmd --permanent --add-service={http,https}<br>sudo firewall-cmd –-reload</pre>
+                        <p>Anschließend per per <i>ifconfig</i>, die IP-Adresse des Servers herausfinden und diese im Browser ihrer Wahl eingeben, um zu verifizieren, dass der Webserver funktionsfähig ist.</p>
+                            <img src="img/nc/apache.png">
+                         <br>
+                    <strong>Installation MySQL</strong>
+                        <p>Zunächst muss überprüft werden, welche MySQL-Version verfügbar ist:</p>    
+                            <pre class="codeblock">sudo dnf module list mysql</pre>
+                            <img src="img/nc/ModuleListSQL.PNG">
+                        <p>Abhängig von dieser, muss sie ausgewählt und installiert werden.<br>NextCloud empfiehlt und unterstützt aktuell Version 8.0</p>
+                            <pre class="codeblock">sudo dnf install -y @mysql:8.0</pre>
+                        <p>Die erfolgreiche Installation kann mit folgendem Befehl überprüft werden:</p>
+                            <pre class="codeblock">sudo rpm -qi mysql-server</pre>
+                            <img src="img/nc/VersionCheckSQL.PNG">
+                         <br>
                     <strong>MySQL Konfigurieren</strong>
-                    <p>Im nächsten Schritt muss der Dienst aktiviert und gestartet werden:</p>
-                    <pre class="codeblock">sudo rpm -qi mysql-server</pre>
-                    <p>Um zu überprüfen, ob der Dienst korrekt läuft, wird folgender Befehl abgesetzt:</p>
-                    <pre class="codeblock">systemctl status mysqld</pre>
-                    <p>Ist der Dienst korrekt gestartet, muss die Installation abgesichter werden<br>Hierfür wird mit folgendem Befehl ein entsprechendes Programm, zur Absicherung Ihres Servers, gestartet:</p>
-                    <pre class="codeblock">sudo mysql_secure_installation</pre>
-                    <p>Innerhalb dieses Programmes werden verschiedene Punkte zur Absicherung genannt, versuchen Sie nach Möglichkeit alle Punkte durchzuführen, indem Sie bei den jeweiligen Fragen mit "Y" antworten.</p>
-                    <details>
-                        <summary><b>Gesamten Programmablauf anzeigen</b></summary>
-                        <pre class="codeblock">
-                        Securing the MySQL server deployment.
+                        <p>Im nächsten Schritt muss der Dienst aktiviert und gestartet werden:</p>
+                            <pre class="codeblock">sudo rpm -qi mysql-server</pre>
+                        <p>Um zu überprüfen, ob der Dienst korrekt läuft, wird folgender Befehl abgesetzt:</p>
+                            <pre class="codeblock">systemctl status mysqld</pre>
+                        <p>Ist der Dienst korrekt gestartet, muss die Installation abgesichter werden<br>Hierfür wird mit folgendem Befehl ein entsprechendes Programm, zur Absicherung Ihres Servers, gestartet:</p>
+                            <pre class="codeblock">sudo mysql_secure_installation</pre>
+                        <p>Innerhalb dieses Programmes werden verschiedene Punkte zur Absicherung genannt, versuchen Sie nach Möglichkeit alle Punkte durchzuführen, indem Sie bei den jeweiligen Fragen mit "Y" antworten.</p>
+                        <details>
+                            <summary><b>Gesamten Programmablauf anzeigen</b></summary>
+                            <pre class="codeblock">
+                            Securing the MySQL server deployment.
 
-                        Connecting to MySQL using a blank password.
+                            Connecting to MySQL using a blank password.
+                                
+                            VALIDATE PASSWORD COMPONENT can be used to test passwords
+                            and improve security. It checks the strength of password
+                            and allows the users to set only those passwords which are
+                            secure enough. Would you like to setup VALIDATE PASSWORD component?
                             
-                        VALIDATE PASSWORD COMPONENT can be used to test passwords
-                        and improve security. It checks the strength of password
-                        and allows the users to set only those passwords which are
-                        secure enough. Would you like to setup VALIDATE PASSWORD component?
-                         
-                        Press y|Y for Yes, any other key for No: 
-                        <strong class="codeHighlight">y</strong>
+                            Press y|Y for Yes, any other key for No: 
+                            <strong class="codeHighlight">y</strong>
+                                
+                            There are three levels of password validation policy:
+                            LOW    Length >= 8
+                            MEDIUM Length >= 8, numeric, mixed case, and special characters
+                            STRONG Length >= 8, numeric, mixed case, special characters and dictionary                  file
+                                
+                            Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 
                             
-                        There are three levels of password validation policy:
-                        LOW    Length >= 8
-                        MEDIUM Length >= 8, numeric, mixed case, and special characters
-                        STRONG Length >= 8, numeric, mixed case, special characters and dictionary                  file
-                            
-                        Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 
-                        
-                        Please set the password for root here.
-                        New password: <strong class="codeHighlight">XYZ</strong>
-                        Re-enter new password: <strong class="codeHighlight">XYZ</strong>
-                            
-                        Estimated strength of the password: 100 
-                        Do you wish to continue with the password provided?
-                        (Press y|Y for Yes, any other key for No) :
-                        <strong class="codeHighlight">y</strong>
+                            Please set the password for root here.
+                            New password: <strong class="codeHighlight">XYZ</strong>
+                            Re-enter new password: <strong class="codeHighlight">XYZ</strong>
+                                
+                            Estimated strength of the password: 100 
+                            Do you wish to continue with the password provided?
+                            (Press y|Y for Yes, any other key for No) :
+                            <strong class="codeHighlight">y</strong>
 
-                        By default, a MySQL installation has an anonymous user,
-                        allowing anyone to log into MySQL without having to have
-                        a user account created for them. This is intended only for
-                        testing, and to make the installation go a bit smoother.
-                        You should remove them before moving into a production
-                        environment.
-                            
-                        Remove anonymous users? (Press y|Y for Yes, any other key for No) :
-                        <strong class="codeHighlight">y</strong>
-                        Success.
-                            
-                        Normally, root should only be allowed to connect from
-                        'localhost'. This ensures that someone cannot guess at
-                        the root password from the network.
-                            
-                        Disallow root login remotely? (Press y|Y for Yes, any other key for No) :
-                        <strong class="codeHighlight">y</strong>
-                        Success.
-                            
-                        By default, MySQL comes with a database named 'test' that
-                        anyone can access. This is also intended only for testing,
-                        and should be removed before moving into a production
-                        environment.
-                             
-                        Remove test database and access to it? (Press y|Y for Yes, any other key for No) :
-                        <strong class="codeHighlight">y</strong>
-                        - Dropping test database...
-                        Success.
-                            
-                        - Removing privileges on test database...
-                        Success.
-                            
-                        Reloading the privilege tables will ensure that all changes
-                        made so far will take effect immediately.
-                            
-                        Reload privilege tables now? (Press y|Y for Yes, any other key for No) :
-                        <strong class="codeHighlight">y</strong>
-                        Success.
-                            
-                        All done!
-                        </pre>
-                    </details>
-                    <br>
+                            By default, a MySQL installation has an anonymous user,
+                            allowing anyone to log into MySQL without having to have
+                            a user account created for them. This is intended only for
+                            testing, and to make the installation go a bit smoother.
+                            You should remove them before moving into a production
+                            environment.
+                                
+                            Remove anonymous users? (Press y|Y for Yes, any other key for No) :
+                            <strong class="codeHighlight">y</strong>
+                            Success.
+                                
+                            Normally, root should only be allowed to connect from
+                            'localhost'. This ensures that someone cannot guess at
+                            the root password from the network.
+                                
+                            Disallow root login remotely? (Press y|Y for Yes, any other key for No) :
+                            <strong class="codeHighlight">y</strong>
+                            Success.
+                                
+                            By default, MySQL comes with a database named 'test' that
+                            anyone can access. This is also intended only for testing,
+                            and should be removed before moving into a production
+                            environment.
+                                
+                            Remove test database and access to it? (Press y|Y for Yes, any other key for No) :
+                            <strong class="codeHighlight">y</strong>
+                            - Dropping test database...
+                            Success.
+                                
+                            - Removing privileges on test database...
+                            Success.
+                                
+                            Reloading the privilege tables will ensure that all changes
+                            made so far will take effect immediately.
+                                
+                            Reload privilege tables now? (Press y|Y for Yes, any other key for No) :
+                            <strong class="codeHighlight">y</strong>
+                            Success.
+                                
+                            All done!
+                            </pre>
+                        </details>
+                         <br>
                     <strong>NextCloud Datenbank erstellen</strong>
-                    <p>Nach abschluss der initialen Konfiguration der DB, müssen wir nun eine Datenbank für NextCloud erstellen,<br>
+                        <p>Nach abschluss der initialen Konfiguration der DB, müssen wir nun eine Datenbank für NextCloud erstellen,<br>
                         einen neuen Nutzer mit dem Benutzernamen "nextcloud" sowie einem zugehörigen Passwort anlegen und diesen Benutzer auf die neuerstellte Datenbank berechtigen:</p>
-                    <pre class="codeblock">sudo mysql -u root -p <br>mysql> create database nextcloud;<br>mysql> create user 'nextcloud'@'localhost' identified by 'PASSWORD';<br>mysql> grant all privileges on nextcloud.* to 'nextcloud'@'localhost';<br>mysql> flush privileges;<br>mysql> quit</pre>
+                            <pre class="codeblock">sudo mysql -u root -p <br>mysql> create database nextcloud;<br>mysql> create user 'nextcloud'@'localhost' identified by 'PASSWORD';<br>mysql> grant all privileges on nextcloud.* to 'nextcloud'@'localhost';<br>mysql> flush privileges;<br>mysql> quit</pre>
+                        <br>
                     <strong>PHP installieren</strong>
-                    <p>Zur Installation der aktuellen PHP-Version benötigen Wir sowohl das EPEL, als auch das Remi Repository.</p>
-                    <p>Diese kann man folgendermaßen hinzufügen:</p>
-                    <pre class="codeblock">sudo dnf install  https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm<br>sudo dnf install  https://rpms.remirepo.net/enterprise/remi-release-8.rpm </pre>
-                    <p>Ist das getan, können mit folgendem Befehl alle verfügbaren PHP-Versionen angezeigt werden:</p>
-                    <pre class="codeblock">sudo dnf module list php</pre>
-                    <p>Und mit folgedem Befehl die aktuell unterstützte PHP-Version festgelegt werden:</p>
-                    <pre class="codeblock">sudo dnf module enable php:remi-8.0 -y</pre>
-                    <p>Genaue Informationen zu unterstützten Versionen finden Sie unter folgendem Link: <a href="https://docs.nextcloud.com/server/latest/admin_manual/installation/system_requirements.html#">Systemvoraussetzungen</a></p>
-                    <img src="img/nc/PHPVersion.png">
-                    <p>Dann müssen alle benötigen Module installiert werden:</p>
-                    <pre class="codeblock">sudo dnf install -y php php-fpm php-mysqlnd php-opcache php-gd php-xml php-mbstring php-common php-json php-zip</pre>
-                    <p>Im Anschluss wird php-fpm aktiviert und gestartet, sowie der Apache-Dienst neu gestartet:</p>
-                    <pre class="codeblock">sudo systemctl start php-fpm.service<br>sudo systemctl enable php-fpm.service<br>sudo systemctl restart httpd<br></pre>
-                    <br>
+                        <p>Zur Installation der aktuellen PHP-Version benötigen Wir sowohl das EPEL, als auch das Remi Repository.</p>
+                        <p>Diese kann man folgendermaßen hinzufügen:</p>
+                            <pre class="codeblock">sudo dnf install  https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm<br>sudo dnf install  https://rpms.remirepo.net/enterprise/remi-release-8.rpm </pre>
+                        <p>Ist das getan, können mit folgendem Befehl alle verfügbaren PHP-Versionen angezeigt werden:</p>
+                            <pre class="codeblock">sudo dnf module list php</pre>
+                        <p>Und mit folgedem Befehl die aktuell unterstützte PHP-Version festgelegt werden:</p>
+                            <pre class="codeblock">sudo dnf module enable php:remi-8.0 -y</pre>
+                        <p>Genaue Informationen zu unterstützten Versionen finden Sie unter folgendem Link: <a href="https://docs.nextcloud.com/server/latest/admin_manual/installation/system_requirements.html#">Systemvoraussetzungen</a></p>
+                            <img src="img/nc/PHPVersion.png">
+                        <p>Dann müssen alle benötigen Module installiert werden:</p>
+                            <pre class="codeblock">sudo dnf install -y php php-fpm php-mysqlnd php-opcache php-gd php-xml php-mbstring php-common php-json php-zip</pre>
+                        <p>Im Anschluss wird php-fpm aktiviert und gestartet, sowie der Apache-Dienst neu gestartet:</p>
+                            <pre class="codeblock">sudo systemctl start php-fpm.service<br>sudo systemctl enable php-fpm.service<br>sudo systemctl restart httpd<br></pre>
+                         <br>
                 </div> 
-                <div>
-                    <div class="portfolio-item-individual_nc">
+                <div class="portfolio-item-individual_nc">
                     <h3>Schritt 2 - NextCloud</h3>
-                    <p>Alle Vorbereitungen für die NextCloud-Installation wurden nun abgeschlossen, im nächsten Schritt findet die eigentliche Installation des Dienstes statt</p>
-                    <p>Zunächst muss die aktuelle Version folgendermaßen heruntergeladen werden:</p>
-                    <pre class="codeblock">wget https://download.nextcloud.com/server/releases/latest-23.zip</pre>
-                    <p>Die heruntergeladene Datei, muss im nächsten Schritt deinstalliert werden, hierfür wird unzip benötigt:</p>
-                    <pre class="codeblock">sudo dnf -y install unzip<br>unzip latest-23.zip</pre>
-                    <p>Die entpackten Dateien müssen im nächsten Schritt in das root Verzeichnis des Apache-Dienstes kopiert werden:</p>
-                    <pre class="codeblock">sudo mv nextcloud /var/www/html</pre>
-                    <p>Zusätzlich muss sollte ein Verzeichnis zum Speichern von Nutzerdaten angelegt werden:</p>
-                    <pre class="codeblock">sudo mkdir /var/www/html/nextcloud/data</pre>
-                    <p>Des Weiteren muss der Apache-Benutzer Owner dieses Verzeichnisses werden:</p>
-                    <pre class="codeblock">sudo chown -R apache:apache /var/www/html/nextcloud/</pre>
-                    <p>Abschließend müssen weitere Berechtigungen gesetzt werden, damit Nextcloud in der Lage ist, Daten in die angegebenen Ordner zu schreiben: </p>
-                    <pre class="codeblock">semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/data(/.*)?'<br>semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/config(/.*)?'<br>semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/apps(/.*)?'<br>semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/.htaccess'<br>semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/.user.ini'<br>semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/3rdparty(/.*)?'<br><br>restorecon -Rv '/var/www/html/nextcloud/'</pre>
-                    </div> 
-                </div>
-                <div>
-                    <div class="portfolio-item-individual_nc">
-                    <h3>Schritt 3 - NextCloud konfigurieren</h3>
-                    <p>Nach abgeschlossener Installation ist NexCloud nun über <i>http://SERVER-IP/nextcloud</i> erreichbar und kann von hier aus weiter eingerichtet werden. </p>
-                    <p>Hier zunächst ein Benutzername + Passwort für den Admin-Account festlegen:</p>
-                    <img src="img/nc/install-wizard.png">
-                    <p>Anschließend das Drop-Down-Menü "Speicher & Datenbank" bzw. "Storage & Database" öffnen.<br>Unter "Datenverzeichnis" soll unser zuvor erstellter Benutzerdaten-Ordner ausgewählt werden --> <b>/var/www/html/nextcloud/data</b> </p>
-                    <p>Im Anschluss die Verbindung zu unserer zuvor erstellten Datenbank <b>"nextcloud"</b> mit dem Benuter <b>"nextcloud"</b> sowie dem zugehörigen Passwort herzustellen. Ansonsten würde NextCloud die interne SQLite DB nutzen, welche in jedem Fall nur für Testinstallationen gedacht ist. </p>
-                    <p>Zum Abschluss der Konfiguration auf "Installieren" klicken. Die Fertigstellung der Konfiguration startet und kann ein paar Minuten dauern.</p>
-                    <img src="img/nc/install-wizard-2.png">
-                    <p>Abschließend können Sie noch empfohlenen Apps installieren, diese können jedoch nach Bedarf im Nachhinein nachinstalliert werden. </p>
-                    </div>
-                </div>
-                <div>
-                    <div style="color: red" class="portfolio-item-individual_nc">
-                        <h3>Schritt 4 - NextCloud Administration</h3>
-                        <p>Offene Punkte zu Sicherheit angucken (Zertifikat, schöne URL etc.)
-                            https://techguides.yt/guides/how-to-install-and-configure-nextcloud-hub-21/
-                            Quellen
-                            </p>
-                    </div>
+                        <p>Alle Vorbereitungen für die NextCloud-Installation wurden nun abgeschlossen, im nächsten Schritt findet die eigentliche Installation des Dienstes statt</p>
+                        <p>Zunächst muss die aktuelle Version folgendermaßen heruntergeladen werden:</p>
+                            <pre class="codeblock">wget https://download.nextcloud.com/server/releases/latest-23.zip</pre>
+                        <p>Die heruntergeladene Datei, muss im nächsten Schritt deinstalliert werden, hierfür wird unzip benötigt:</p>
+                            <pre class="codeblock">sudo dnf -y install unzip<br>unzip latest-23.zip</pre>
+                        <p>Die entpackten Dateien müssen im nächsten Schritt in das root Verzeichnis des Apache-Dienstes kopiert werden:</p>
+                            <pre class="codeblock">sudo mv nextcloud /var/www/html</pre>
+                        <p>Zusätzlich muss sollte ein Verzeichnis zum Speichern von Nutzerdaten angelegt werden:</p>
+                            <pre class="codeblock">sudo mkdir /var/www/html/nextcloud/data</pre>
+                        <p>Des Weiteren muss der Apache-Benutzer Owner dieses Verzeichnisses werden:</p>
+                            <pre class="codeblock">sudo chown -R apache:apache /var/www/html/nextcloud/</pre>
+                        <p>Abschließend müssen weitere Berechtigungen gesetzt werden, damit Nextcloud in der Lage ist, Daten in die angegebenen Ordner zu schreiben: </p>
+                            <pre class="codeblock">semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/data(/.*)?'<br>semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/config(/.*)?'<br>semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/apps(/.*)?'<br>semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/.htaccess'<br>semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/.user.ini'<br>semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/3rdparty(/.*)?'<br><br>restorecon -Rv '/var/www/html/nextcloud/'</pre>
+                        <br>
                 </div> 
-            </div>
+                <div class="portfolio-item-individual_nc">
+                    <h3>Schritt 3 - NextCloud konfigurieren</h3>
+                        <p>Nach abgeschlossener Installation ist NexCloud nun über <i>http://SERVER-IP/nextcloud</i> erreichbar und kann von hier aus weiter eingerichtet werden. </p>
+                        <ol class="portfolio-item-individual_nc_list">
+                            <li>Hier zunächst ein Benutzername + Passwort für den Admin-Account festlegen:<br><img src="img/nc/install-wizard.png"></li>
+                            <li>Anschließend das Drop-Down-Menü "Speicher & Datenbank" bzw. "Storage & Database" öffnen.</li>
+                            <li>Unter "Datenverzeichnis" soll unser zuvor erstellter Benutzerdaten-Ordner ausgewählt werden: <ul><li><b>/var/www/html/nextcloud/data</b></li></b></ul></li>
+                            <li>Verbindung zu unserer zuvor erstellten Datenbank <b>nextcloud</b> mit dem Benuter <b>nextcloud</b> sowie dem zugehörigen Passwort herzustellen.</li>
+                            <li>Zum Abschluss der Konfiguration auf "Installieren" klicken. Die Fertigstellung der Konfiguration startet und kann ein paar Minuten dauern.<br><img src="img/nc/install-wizard-2.png"></li>
+                            <li>Abschließend können Sie noch empfohlenen Apps installieren, diese können jedoch nach Bedarf im Nachhinein nachinstalliert werden. </li>
+                        </ol>
+                </div>
+                <div style="color: red" class="portfolio-item-individual_nc">
+                    <h3>Schritt 4 - NextCloud Administration</h3>
+                        <br>
+                        <strong>Pretty URLs</strong>   
+                            <a href="https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#pretty-urls"><br>Klick</a> 
+                        <br>
+                        <strong>Enabling SSL</strong>   
+                            <a href="https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#enabling-ssl"><br>Klick</a> 
+                            <a href="https://docs.nextcloud.com/server/stable/admin_manual/installation/harden_server.html#use-https"><br>Klick 2</a> 
+                </div>
+            </div> 
         </div>
-
-
-
-
-
-
 
 
         <!-- Footer -->
@@ -256,8 +253,6 @@
                 </li>
             </ul>
         </footer>
-
         <script src="js/index.js"></script>
-
     </body>
 </html>

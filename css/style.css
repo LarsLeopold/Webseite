@@ -558,3 +558,7 @@ header {
 .portfolio-item-individual_nc > p {
     margin: 5px;
 }
+
+.portfolio-item-individual_nc_list > li {
+    margin-bottom: 10px;
+}
