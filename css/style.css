@@ -392,12 +392,12 @@ header {
 
 /* SKILL 4 */
 .skill4{
-    width: 65%
+    width: 70%
 }
 
 /* SKILL 5 */
 .skill5{
-    width: 80%;
+    width: 75%;
 }
 
 /* SKILL 6 */
@@ -405,6 +405,15 @@ header {
     width: 90%
 }
 
+/* SKILL 7 */
+.skill7{
+    width: 60%
+}
+
+/* SKILL 8 */
+.skill8{
+    width: 90%
+}
 
 /* About me Section */
 
