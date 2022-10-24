@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="de">
+    <header>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Scaling for small Devices -->
+        <title> Lars Leopold Portfolio </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/> <!-- Normalize all Browser Functions -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.css"/> 
+
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;900&family=Source+Sans+Pro:wght@300;900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/style.css">
+    </header>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="img/logo.svg" alt="Avatar">
+            </div>
+            <button class="nav-toggle" arial-label="toogle naviagtion">
+                <span class="hamburger"></span>
+            </button> 
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
+                    <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About me</a></li>
+                    <li class="nav__item"><a href="#work" class="nav__link">My Work</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Introduction -->
+        <section class="intro" id="home">
+            <h1 class="section__title section__title--intro">
+                Hallo, ich bin <strong>Lars Leopold</strong>
+            </h1>
+            <p class="section__subtitle section__subtitle--intro">Sys-Admin</p>
+            <img src="img/photo.png" alt="Image" class="intro__img">
+        </section>
+
+
+        <!-- Services -->
+        <section class="my-services" id="services">
+                <h2 class="section__title section__title--services">Was habe ich in der Vergangenheit gemacht?</h2>
+                <div class="services">
+                    <div class="service">
+                        <h3>Ausbildung</h3>
+                        <p>Nach meiner Ausbildung, habe ich im August 2019 meine Ausbildung zum Fachinfoirmatiker für Systemintegratoion bei XX begonnen</p>
+                    </div> 
+
+                    <div class="service">
+                        <h3>Studium</h3>
+                        <p>Nach erfolgreichen Abschluss studiere ich nun seit September 2022 berufsintegriert Wirtschaftsinformatik an der Hochschule in Mainz</p>
+                    </div> 
+
+                    <div class="service">
+                        <h3>Zukunft</h3>
+                        <p>Nach Abschluss des Bachelor-Studiums, strebe ich zunächst den Master an. Im Anschluss mächte ich mich auf ein Fachgebiet spezialisieren</p>
+                    </div> 
+                </div>
+
+                <a href="#work" class="btn">Meine Projekte</a>
+        </section>
+
+        <!-- Skills -->
+        <section class="my-skills" id="skills">
+            <div class="skills">
+                <h2 class="section__title section__title--skills">Meine Fähigkeiten</h2>
+                 <div class="skill">
+                        <p><u>Ticket- und Wiki-Tool:</u></p>
+                        <p>Jira & Confluence</p>
+                        <div class="skill-bar skill1">
+                            <span>95%</span>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <p><u>Software Asset Management:</u></p>
+                        <p>Snow Software</p>
+                        <div class="skill-bar skill2">
+                             <span>85%</span>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <p><u>Virtualisierung:</u></p>
+                        <p>VMware vSphere</p>
+                        <div class="skill-bar skill3">
+                            <span>75%</span>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <p><u>Virtual Desktop Infrastructur (VDI):</u></p>
+                        <p>Just-in-Time Management Plattform (JMP)</p>
+                        <div class="skill-bar skill4">
+                            <span>70%</span>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <p>User Profil Managment (FSLogix/DEM)</p>
+                        <div class="skill-bar skill5">
+                            <span>75%</span>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <p>Out of the Box Deployment (ThinClient-Umgebung)</p>
+                        <div class="skill-bar skill6">
+                            <span>90%</span>
+                        </div>
+                    </div>   
+                    </div>
+                    <div class="skill">
+                        <p><u>Mobile Device Management (MDM)</u></p>
+                        <p>VMware Workspace ONE</p>
+                        <div class="skill-bar skill7">
+                            <span>60%</span>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <p><u>Updateverteilung</u></p>
+                        <p>Windows Server Update Servicce (WSUS)</p>
+                        <div class="skill-bar skill8">
+                            <span>90%</span>
+                        </div>
+                    </div>
+            </div>
+    </section>
+
+        <!-- About Me -->
+        <section class="about-me" id="about">
+            <h2 class="section__title section__title--about">Wer bin ich?</h2>
+            <p class="section__subtitle section__subtitle--about">Fachinformatiker aus Hessen</p>
+
+            <div class="about-me__body">
+                <p>Mein Name ist Lars Leopold, ich bin ausbebildeter Fachinformatiker für Systemintegratoion und studiere aktuell berufsintegriert Wirtschaftsinformatik an der Hochschule in Mainz </p>
+                <p>Diese Webeite dient als privates Projekt. In der Zukunft möchte ich hier Tipps und Tricks veröffentlichen, welche mir im täglichen Doing helfen. Diese möchte ich mit allen Interessierten teilen!</p>
+            </div>
+
+            <img src="img/photo.png" alt="Avatar" class="about-me__img">
+        </section>
+
+        <!-- My Work -->
+        <section class="my-work" id="work">
+            <h2 class="section__title section__title--work">Meine Projekte</h2>
+            <p class="section__subtitle section__subtitle--work">Eine Auswahl meiner Arbeiten</p>
+
+            <div class="portfolio">
+                <!-- Portfolio Item 1 -->
+                <a href="portfolio-item1.html" class="portfolio__item">
+                    <img src="img/coming-soon.png" alt="" class="portfolio__img">
+                </a>
+
+                <!-- Portfolio Item 2 -->
+                <a href="portfolio-item2.html" class="portfolio__item">
+                    <img src="img/nextcloud-square-logo.png" alt="" class="portfolio__img">
+                </a>
+
+                <!-- Portfolio Item 3 -->
+    
+                <a href="portfolio-item3.html" class="portfolio__item">
+                    <img src="img/coming-soon.png" alt="" class="portfolio__img">
+                </a>
+
+                <!-- Portfolio Item 4 -->
+                <!--
+                <a href="#" class="portfolio__item">
+                    <img src="img/photo.png" alt="" class="portfolio__img">
+                </a>
+                -->
+
+                <!-- Portfolio Item 5 -->
+                <!--
+                <a href="#" class="portfolio__item">
+                    <img src="img/photo.png" alt="" class="portfolio__img">
+                </a>
+                -->
+
+
+                <!-- Portfolio Item 6 -->
+                <!--
+                <a href="#" class="portfolio__item">
+                    <img src="img/photo.png" alt="" class="portfolio__img">
+                </a>
+                -->
+            </div>
+        </section> 
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="mailto:info@lars-leopold.de" class="footer__link">info@lars-leopold.de</a>
+            <ul class="social-list">
+                <li class="social-list__item">
+                    <a class="social-list__link" href="www.github.com/LarsLeopold/">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="www.twitter.com">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="www.instagram.com">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="www.linkedin">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+
+        <script src="js/index.js"></script>
+
+    </body>
+</html>
